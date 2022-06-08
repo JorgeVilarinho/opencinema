@@ -1,60 +1,146 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="open_cinema.list">
-      <field name="name">OpenCinema list</field>
-      <field name="model">open_cinema.open_cinema</field>
+
+    <record model="ir.ui.view" id="film_tree_view">
+      <field name="name">film.tree</field>
+      <field name="model">opencinema.film</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="year"/>
+          <field name="duration"/>
+          <field name="director"/>
         </tree>
       </field>
     </record>
--->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="open_cinema.action_window">
-      <field name="name">OpenCinema window</field>
-      <field name="res_model">open_cinema.open_cinema</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="open_cinema.action_server">
-      <field name="name">OpenCinema server</field>
-      <field name="model_id" ref="model_open_cinema_open_cinema"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+    <record model="ir.ui.view" id="film_search_view">
+      <field name="name">film.search</field>
+      <field name="model">opencinema.film</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="year"/>
+        </search>
       </field>
     </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="OpenCinema" id="open_cinema.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="open_cinema.menu_1" parent="open_cinema.menu_root"/>
-    <menuitem name="Menu 2" id="open_cinema.menu_2" parent="open_cinema.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="open_cinema.menu_1_list" parent="open_cinema.menu_1"
-              action="open_cinema.action_window"/>
-    <menuitem name="Server to list" id="open_cinema" parent="open_cinema.menu_2"
-              action="open_cinema.action_server"/>
--->
+    <record model="ir.ui.view" id="film_form_view">
+      <field name="name">film.form</field>
+      <field name="model">opencinema.film</field>
+      <field name="arch" type="xml">
+        <form string="Film Form">
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+            <notebook>
+              <page string="Data">
+                <group>
+                  <field name="duration"/>
+                  <field name="release_date"/>
+                  <field name="year"/>
+                  <field name="director"/>
+                </group>
+              </page>
+              <page string="Description">
+                <group>
+                  <field name="description"/>
+                </group>
+              </page>
+            </notebook> 
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="screenings_tree_view">
+      <field name="name">screening.tree</field>
+      <field name="model">opencinema.screening</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="place"/>
+          <field name="screening_date"/>
+          <field name="seats"/>
+          <field name="price"/>
+          <field name="responsible_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="screening_search_view">
+      <field name="name">screening.search</field>
+      <field name="model">opencinema.screening</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="place"/>
+          <field name="price"/>
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="screening_form_view">
+      <field name="name">screening.form</field>
+      <field name="model">opencinema.screening</field>
+      <field name="arch" type="xml">
+        <form string="Screening Form">
+          <sheet>
+            <group>
+              <field name="place"/>
+            </group>
+            <notebook>
+              <page string="Data">
+                <group>
+                  <field name="price"/>
+                  <field name="seats"/>
+                  <field name="screening_date"/>
+                  <field name="responsible_id"/>
+                </group>
+              </page>
+            </notebook> 
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="director_tree_view">
+      <field name="name">director.tree</field>
+      <field name="model">opencinema.director</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nacionality"/>
+          <field name="films"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="director_search_view">
+      <field name="name">director.search</field>
+      <field name="model">opencinema.director</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nacionality"/>
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="director_form_view">
+      <field name="name">director.form</field>
+      <field name="model">opencinema.director</field>
+      <field name="arch" type="xml">
+        <form string="Director Form">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="nacionality"/>
+              <field name="films"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
   </data>
 </odoo>

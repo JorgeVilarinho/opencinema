@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 film_manager,film manager,model_opencinema_film,group_opencinema_manager,1,1,1,1
+screening_manager,screening manager,model_opencinema_screening,group_opencinema_manager,1,1,1,1
+director_manager,director manager,model_opencinema_director,group_opencinema_manager,1,1,1,1

@@ -1,0 +1,64 @@
+<odoo>
+    
+    <report
+        id="report_director"
+        model="opencinema.director"
+        string="Directors Report"
+        name="open_cinema.report_director_view"
+        file="open_cinema.report_director"
+        report_type="qweb-pdf" />
+
+    <template id="report_director_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <ul>
+                            <li><p>Nacionalidad: <span t-field="doc.nacionality" /></p></li>
+                        </ul>
+                        <p>Peliculas dirixidas:</p>
+                        <ul>
+                            <t t-set="counter" t-value="0" />
+                            <t t-foreach="doc.films" t-as="films">
+                                <t t-set="counter" t-value="counter + 1" />
+                                <li><span t-field="films.name"/></li>
+                            </t>
+                        </ul>
+                        <p>Cantidad de minutos total: <span t-esc="sum([film.duration for film in doc.films])" /></p>
+                        <p>Cantidad de peliculas dirigidas: <t t-esc="counter" /></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="report_film"
+        model="opencinema.film"
+        string="Films Report"
+        name="open_cinema.report_film_view"
+        file="open_cinema.report_film"
+        report_type="qweb-pdf" />
+
+    <template id="report_film_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1 t-field="doc.name"/>
+                        <h2>Datos: </h2>
+                        <ul>
+                            <li><p>Descripción: <span t-field="doc.description" /></p></li>
+                            <li><p>Fecha de salida: <span t-field="doc.release_date" /></p></li>
+                            <li><p>Año de salida: <span t-field="doc.year" /></p></li>
+                            <li><p>Duración: <span t-field="doc.duration" /></p></li>
+                            <li><p>Director: <span t-field="doc.director.name" /></p></li>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -22,11 +22,15 @@
     # any module necessary for this one to work correctly
     'depends': ['base'],
 
+    'application': True, 
+
     # always loaded
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/opencinema.xml',
+        'views/views.xml',
+        'views/reports.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

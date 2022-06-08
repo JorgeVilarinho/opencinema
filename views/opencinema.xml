@@ -6,19 +6,36 @@
             <field name="res_model">opencinema.film</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">Create the first film
-                </p>
+                <p class="o_view_nocontent_smiling_face">Create the first film</p>
             </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="screening_list_action">
+            <field name="name">Screenings</field>
+            <field name="res_model">opencinema.screening</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="director_list_action">
+            <field name="name">Directors</field>
+            <field name="res_model">opencinema.director</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
         <menuitem id="main_opencinema_menu" name="Open Cinema" groups="group_opencinema_manager"/>
       
         <menuitem id="opencinema_menu" name="Open Cinema"
-        groups="group_opencinema_manager"
-                  parent="main_opencinema_menu"/>
+            groups="group_opencinema_manager"
+            parent="main_opencinema_menu"/>
      
         <menuitem id="films_menu" name="Films" parent="opencinema_menu"
-        groups="group_opencinema_manager"
-                  action="film_list_action"/>
+            groups="group_opencinema_manager"
+            action="film_list_action" />
+
+        <menuitem id="screening_menu" name="Screenings" parent="opencinema_menu"
+          groups="group_opencinema_manager" action="screening_list_action" />
+
+        <menuitem id="director_menu" name="Directors" parent="opencinema_menu"
+          groups="group_opencinema_manager" action="director_list_action" />
       
 </odoo>
